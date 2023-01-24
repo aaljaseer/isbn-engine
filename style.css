@@ -1,0 +1,228 @@
+@function between($to, $from, $toWidth, $fromWidth) {
+  $slope: ($to - $from) / ($toWidth - $fromWidth);
+  $base: $from - $slope * $fromWidth;
+
+  @return calc(#{$base} + #{100vw * $slope});
+}
+.pushable {
+  justify-self:center;
+  position:relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+}
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    rgb(115, 89, 231) 100%,
+    rgb(115, 89, 231) 8%,
+    rgb(115, 89, 231) 92%,
+    rgb(115, 89, 231)  100%
+  );
+}
+.front {
+  display: block;
+  position: relative;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: white;
+  background:  rgb(119, 96, 223) ;
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+.pushable:hover {
+  filter: brightness(110%);
+}
+.pushable:hover .front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+.pushable:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+.pushable:hover .shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+.pushable:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+$small: 550px;
+$large: 1600px;
+
+:root {
+  font-size: between(24px, 16px, $large, $small);
+}
+
+*,*:before,*:after { box-sizing: inherit }
+
+html  {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+}
+
+body {
+  color: #805466;
+  margin: auto;
+   background-color: #faf7f6;
+ 
+}
+
+
+ #mis{
+        position: fixed;
+        padding: 100px;
+        top: 150;
+        left: 110;
+}
+
+
+#app {
+  padding: 5%;
+}
+
+#book-search {
+  display: inline;
+  align-content: center;
+  align-items:center;
+}
+
+label span {
+  display: block;
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+input {
+  position: center ;
+  padding: .4rem .5rem;
+  border-radius: .25rem;
+  border: 2px solid #f3edeb;
+  margin-top: .25rem;
+  margin-right: .25rem;
+  box-shadow: 0 .4rem 1rem -.4rem #d4b1a5;
+  margin-bottom:.50rem;
+  width: 60%; 
+}
+
+
+
+
+
+.search-results {
+  padding-left: 0;
+  
+  li + li {
+    margin-top: .5rem
+  }
+}
+
+.search-result {
+  background-color: white;
+  position: relative;
+  border: 2px solid #f3edeb;;
+  border-radius: .25rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 1rem -.75rem #dfc8c0;
+  display: flex;
+  align-items: center;
+}
+
+.search-result--thumbnail {
+  flex: none;
+  width: 15%;
+  width: 4rem;
+  height: auto;
+  align-self: flex-start;
+}
+
+.search-result--info {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: .5rem;
+  list-style: none;
+}
+
+.search-result--title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #65002a;
+}
+
+.search-result--authors {
+  font-size: .9rem
+}
+
+.search-result--published {
+  font-size: .8rem;
+}
+
+#all-the-books {
+  width: 100%;
+}
+.footer{
+  text-transform: uppercase;
+  padding: 0 20px 0 20px;
+
+  color:black;
+  font-size:14px;
+  letter-spacing: .08em;
+  font-weight: 500;
+
+}
+
+.name{
+
+  font-weight:700;
+  text-color: #65002a;
+
+}
+.copyrights{
+  
+
+  float:right;
+}
