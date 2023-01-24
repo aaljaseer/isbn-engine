@@ -18,13 +18,14 @@
 
 
   
- <form id="book-search" @submit.prevent="search">
-    <label>
-      <span>Search for a book</span>
-      
-      <input  type="text" v-model:trim="searchTerm" placeholder="⌕ Type Author, book name, subject....">
-    </label>   
-<br><br>
+ <main>
+
+  <form id="book-search" @submit.prevent="search" class="search-form">
+         
+    <label >   <span>  Search for a book </span>    <br>
+    </label>    
+   <input class="v" type="text" v-model:trim="searchTerm" placeholder="⌕ Type Author, book name, subject....">
+<br><br>  
      <button class="pushable">
       <span class="shadow"></span>
       <span class="edge"></span>
@@ -35,7 +36,7 @@
   </form>
 
  
-
+<br>
   <ol class="search-results">
     <li class="search-result" v-for="book in searchResults.items">
       <img :src="'http://books.google.com/books/content?id=' + book.id + '&printsec=frontcover&img=1&zoom=1&source=gbs_api'" class="search-result--thumbnail">
@@ -54,8 +55,7 @@
     </li>
   </ol>
   
-  <img src="https://thumbs.dreamstime.com/b/icons-eat-sleep-read-vector-icons-eat-sleep-read-107189110.jpg" id="all-the-books" v-if="searchResults.items">
-</div>
+ 
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.js'></script><script  src="./script.js"></script>
